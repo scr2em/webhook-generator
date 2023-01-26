@@ -41,42 +41,38 @@ const Home = ({ queryUrl, oldRequests }: InferGetServerSidePropsType<typeof getS
         <div className=" container max-w-5xl  mx-auto mt-4">
             <div className="grid gap-4 grid-cols-12">
                 <div className="col-span-12 bg-gray-50 shadow dark:bg-gray-800 rounded-lg p-10 grid place-items-center">
-                    <span>Your generated webhook URL</span>
-                    {webhookUrl && (
-                        <span className="flex items-center gap-4">
-                            {webhookUrl}
-
-                            <Tooltip label="Copy" aria-label="A tooltip">
-                                <span
-                                    className=" px-2 py-1"
-                                    onClick={() => {
-                                        navigator.clipboard.writeText(webhookUrl);
-                                        toast({
-                                            title: "URL copied.",
-                                            description: "",
-                                            status: "success",
-                                            duration: 1500,
-                                            isClosable: true,
-                                            position: "top-right",
-                                        });
-                                    }}
-                                >
-                                    <IoCopyOutline />
-                                </span>
-                            </Tooltip>
-
-                            <Tooltip label="Open external URL" aria-label="A tooltip">
-                                <a href={webhookUrl} target="_blank" rel="noreferrer">
-                                    <BiLinkExternal />
-                                </a>
-                            </Tooltip>
-                            <Tooltip label="Generate a new URL" aria-label="A tooltip">
-                                <Link href="/">
-                                    <IoRefreshOutline />
-                                </Link>
-                            </Tooltip>
-                        </span>
-                    )}
+                    <span className="flex items-center gap-4">
+                        Your generated webhook URL
+                        <Tooltip label="Copy" aria-label="A tooltip">
+                            <span
+                                className=" px-2 py-1"
+                                onClick={() => {
+                                    navigator.clipboard.writeText(webhookUrl);
+                                    toast({
+                                        title: "URL copied.",
+                                        description: "",
+                                        status: "success",
+                                        duration: 1500,
+                                        isClosable: true,
+                                        position: "top-right",
+                                    });
+                                }}
+                            >
+                                <IoCopyOutline />
+                            </span>
+                        </Tooltip>
+                        <Tooltip label="Open external URL" aria-label="A tooltip">
+                            <a href={webhookUrl} target="_blank" rel="noreferrer">
+                                <BiLinkExternal />
+                            </a>
+                        </Tooltip>
+                        <Tooltip label="Generate a new URL" aria-label="A tooltip">
+                            <Link href="/">
+                                <IoRefreshOutline />
+                            </Link>
+                        </Tooltip>
+                    </span>
+                    {webhookUrl && <span className="flex items-center gap-4">{webhookUrl}</span>}
                     {!url && <Skeleton height="20px" />}
                 </div>
                 <div className="col-span-3">
