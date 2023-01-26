@@ -92,7 +92,7 @@ const Home = ({ queryUrl, oldRequests }: InferGetServerSidePropsType<typeof getS
                                             onClick={() => handleRequestClick(req)}
                                             method={req.method}
                                             // @ts-ignore
-                                            host={req.headers?.host}
+                                            ip={req.headers?.["x-forwarded-for"]}
                                             createdAt={req.created_at}
                                             selected={selectedRequest?.id === req.id}
                                         />

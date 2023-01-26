@@ -9,14 +9,14 @@ const methodsColors = {
 export default function RequestListItem({
     id,
     method,
-    host = "",
+    ip = "",
     onClick,
     createdAt,
     selected,
 }: {
     id: number;
     method: string;
-    host?: string;
+    ip?: string;
     onClick: any;
     createdAt: string;
     selected: boolean;
@@ -31,7 +31,7 @@ export default function RequestListItem({
             >
                 <div className=" flex  whitespace-nowrap">
                     <span className="flex-1 overflow-hidden text-ellipsis  ">
-                        #{id} {host}
+                        #{id} {ip}
                     </span>
                     <span
                         className={
