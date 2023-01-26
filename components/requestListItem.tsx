@@ -9,14 +9,14 @@ const methodsColors = {
 export default function RequestListItem({
     id,
     method,
-    host,
+    host = "",
     onClick,
     createdAt,
     selected,
 }: {
     id: number;
-    method: keyof typeof methodsColors;
-    host: string;
+    method: string;
+    host?: string;
     onClick: any;
     createdAt: string;
     selected: boolean;
@@ -36,6 +36,7 @@ export default function RequestListItem({
                     <span
                         className={
                             " flex-shrink-0 grid place-items-center uppercase text-white rounded px-1 font-bold text-xs mx-1 " +
+                            // @ts-ignore
                             methodsColors[method]
                         }
                     >

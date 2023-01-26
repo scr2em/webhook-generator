@@ -20,7 +20,7 @@ const Home = ({ queryUrl, oldRequests }: InferGetServerSidePropsType<typeof getS
         if (Array.isArray(oldRequests)) {
             setRequests(oldRequests);
         }
-    }, [queryUrl]);
+    }, [queryUrl, oldRequests]);
 
     useEffect(() => {
         if (url) {
@@ -66,7 +66,7 @@ const Home = ({ queryUrl, oldRequests }: InferGetServerSidePropsType<typeof getS
                             </Tooltip>
 
                             <Tooltip label="Open external URL" aria-label="A tooltip">
-                                <a href={webhookUrl} target="_blank">
+                                <a href={webhookUrl} target="_blank" rel="noreferrer">
                                     <BiLinkExternal />
                                 </a>
                             </Tooltip>
@@ -87,10 +87,12 @@ const Home = ({ queryUrl, oldRequests }: InferGetServerSidePropsType<typeof getS
                                 {requests.map((req) => {
                                     return (
                                         <RequestListItem
+                                            key={req.id}
                                             id={req.id}
                                             onClick={() => handleRequestClick(req)}
                                             method={req.method}
-                                            host={req.headers.host}
+                                            // @ts-ignore
+                                            host={req.headers?.host}
                                             createdAt={req.created_at}
                                             selected={selectedRequest?.id === req.id}
                                         />

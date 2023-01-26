@@ -32,7 +32,10 @@ const JsonViewer = ({ src = {} }: { src: Json }) => {
                                 {src &&
                                     Object.entries(src).map(([key, value]) => {
                                         return (
-                                            <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                            <tr
+                                                className="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
+                                                key={key}
+                                            >
                                                 <th
                                                     scope="row"
                                                     className="px-2 py-2 font-medium  whitespace-nowrap dark:text-white"
